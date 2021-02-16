@@ -28,23 +28,23 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">WHO</a></li>
-        <li><a href="#">WHAT</a></li>
-        <li><a href="#">WHERE</a></li>
+        <li><a href="#sectionWho">WHO</a></li>
+        <li><a href="#sectionWhat">WHAT</a></li>
+        <li><a href="#sectionWhere">WHERE</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- First Container -->
-<div class="container-fluid bg-1 text-center">
+<div class="container-fluid bg-1 text-center" id="sectionWho">
   <h3 class="margin">Who Am I?</h3>
-  <img src="C:\Users\User\Documents\NetBeansProjects\startHTML\public_html\images\bird.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+  <img src="./images/bird.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
   <h3>I'm an adventurer</h3>
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-2 text-center">
+<div class="container-fluid bg-2 text-center" id="sectionWhat">
   <h3 class="margin">What Am I?</h3>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
   <a href="#" class="btn btn-default btn-lg">
@@ -53,23 +53,37 @@
 </div>
 
 <!-- Third Container (Grid) -->
-<div class="container-fluid bg-3 text-center">    
+<div class="container-fluid bg-3 text-center" id="sectionWhere">    
   <h3 class="margin">Where To Find Me?</h3><br>
   <div class="row">
     <div class="col-sm-4">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="./images/birds1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <div class="relative"> 
+        <img src="./images/screen1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+       
+        <div class="absolute"> <div class="note1">Hello! <br> <div class="note2">blablabla <br> blablabla</div> </div> </div>
+      </div>  
     </div>
     <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="./images/birds2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>   
+      <div class="style">
+          <img src="./images/screen2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      </div>
     </div>
+
     <div class="col-sm-4"> 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="./images/birds3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <div class="container">
+        <img src="./images/screen3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+        <div class="overlay">
+          <div class="text">Hello World</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
