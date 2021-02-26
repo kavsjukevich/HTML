@@ -25,7 +25,7 @@
       </button>
       <a class="navbar-brand" href="#">MY FIRST WEBSITE</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#sectionWho">DIV</a></li>
         <li><a href="#sectionWhat">SPAN</a></li>
@@ -36,6 +36,8 @@
   </div>
 </nav>
 
+
+<div class="content">
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center" id="sectionWho">
   <h3 class="margin">SHORTLY ABOUT HTML</h3>
@@ -98,6 +100,21 @@
 <footer class="container-fluid bg-4 text-center">
   <p>Information from <a href="https://www.w3schools.com">www.w3schools.com</a> was used</p> 
 </footer>
-
+</div>
+<script>
+  window.onscroll = function() {myFunction()};
+  
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+  
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+  </script>
+  
 </body>
 </html>
