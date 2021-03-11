@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Form</title>
+</head>
+<body>
+
+<h>Smart Form</h>
+<p>NxN table</p>
+<form id="myForm" action="/action_page.php">
+    Enter Value: <input type="number" name="nTable"><br>
+ <!---   <input type="submit" value="Submit"> -->
+  </form>
+  
+  
+  <button onclick="addTable()">Try it</button>
+  <div id="myTable"></div>
+
+  
+  <script>
+  
+  function addTable() {
+  var n = document.getElementsByName("nTable")[0].value;
+  
+  var myTableDiv = document.getElementById("myTable");
+
+  var table = document.createElement('TABLE');
+  table.border = '1';
+  var tableBody = document.createElement('TBODY');
+  table.appendChild(tableBody);
+  var count=0;
+  for (var i = 0; i < n; i++) {
+    var tr = document.createElement('TR');
+    tableBody.appendChild(tr);
+
+    for (var j = 0; j < n; j++) {
+      var td = document.createElement('TD');
+      td.width = '75';
+      td.height = '75';
+      count++;
+      td.appendChild(document.createTextNode(count));
+      tr.appendChild(td);
+    }
+  }
+  myTableDiv.appendChild(table);
+}
+addTable();
+  </script>
+
+</body>
+</html>
