@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="./css/stils.css">
+  <title>Game</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+ </p>
+</head>
+  <body>
+    <h style="color:rgb(255, 255, 255)">Amiņas spēle</h>
+    <p>(Laukuma izmērs - 2x2 / 4x4 / 6x6)</p>
+    <form id="myForm" action="/action_page.php">
+        Ievadiet laukuma izmēru (2,4,6): <input type="text" id="input" name="input" class = "input"><br>
+    
+      </form>
+
+    <button onclick="startGame()" class = "startButton">Sākt spēli</button>
+    <div id="myTable"></div>
+ 
+    <div class="playground" name = "playground" id="playground">
+      
+    </div>
+
+    <div id="result" name="result"> </div>
+
+  </body>
+<script src="js/spele.js"></script>
+</html>
