@@ -4,25 +4,25 @@ function startGame() {
         time++;
       }, 1000);
 
-    var library = [ // bildes.
-        'https://i.imgur.com/RtybSAO.jpg',
-        'https://i.imgur.com/Q8dp4MV.png',
-        'https://i.imgur.com/R5sNgWR.jpg',
-        'https://i.imgur.com/AcX8GY6.png',
-        'https://i.imgur.com/4x5q4ZI.jpg',
-        'https://i.imgur.com/vgyHo0B.png',
-        'https://i.imgur.com/KCpSTtL.jpg',
-        'https://i.imgur.com/QRreOKX.jpg',
-        'https://i.imgur.com/ueMgXvG.jpg',
-        'https://i.imgur.com/E4gWCyo.jpg',
-        'https://i.imgur.com/gbk9EXa.jpg',
-        'https://i.imgur.com/JCUjCvS.png',
-        'https://i.imgur.com/6SiDpVh.jpg',
-        'https://i.imgur.com/kQg15sO.jpg',
-        'https://i.imgur.com/Xn5wazo.jpg',
-        'https://i.imgur.com/OCwEoCa.png',
-        'https://i.imgur.com/zgd1s4e.jpg',
-        'https://i.imgur.com/e8zW0VY.png'
+    var names = [
+        'Subaru',
+        'BMW',
+        'Peugeot',
+        'Honda',
+        'Seat',
+        'Fiat',
+        'Renault',
+        'Mazda',
+        'Toyota',
+        'Volvo',
+        'Prosche',
+        'Mercedes',
+        'Mitsubishi',
+        'Ford',
+        'Mini',
+        'AlfaRomeo',
+        'Skoda',
+        'Audi'
     ]
 
     document.getElementById("playground").innerHTML = null;
@@ -32,6 +32,13 @@ function startGame() {
     var guessed = 0;
 
     var n = document.getElementById("input").value;
+
+    window.getRunningScript = () => {
+        return () => {      
+            return new Error().stack.match(/([^ \n])*([a-z]*:\/\/\/?)*?[a-z0-9\/\\]*\.js/ig)[0]
+        }
+    }
+    console.log('%c Currently running script:', 'color: blue', String(getRunningScript()()).replace("/js/spele.js", "/images/cars/1.png"))
 
     if(n > 0 && n % 2 == 0 && n < 7) { // init
 
@@ -59,18 +66,20 @@ function startGame() {
             while(final[randNext] != undefined || final[randNext] != null) {
                 randNext = Math.floor(Math.random() * (size));
             }
-            final[randNext] = library[randPic];
+            final[randNext] = String(getRunningScript()()).replace("/js/spele.js", "/images/cars/") + names[randPic] + ".png";
 
             while(final[randNext] != undefined || final[randNext] != null) {
                 randNext = Math.floor(Math.random() * (size));
-            }
+            } //new pic
 
-            final[randNext] = library[randPic];
-            var index = library.indexOf(library[randPic]);
+            final[randNext] = names[randPic]; // fill with pic
+
+            var index = names.indexOf(names[randPic]);
             if (index > -1) {
-                library.splice(index, 1);
+                names.splice(index, 1);
             }
-        }    
+        }  
+        console.log(final);  
     }
 
     function divPressed() {
@@ -79,9 +88,15 @@ function startGame() {
             var id = document.getElementById(this.id).id;
             pressed.push(id);
             var object = document.getElementById(id);
-            object.style.cssText = `border-radius: 1vh; height: 100px; width: 100px; background-image:url('${final[id]}');`;
+            if(String(final[id]).includes("HTML")) {
+                object.style.cssText = `border-radius: 1vh; height: 100px; width: 100px; background-image:url('${final[id]}');`;
+            }
+            else {
+                object.textContent = final[id];
+                object.style.cssText = `border-radius: 1vh; height: 100px; width: 100px; background-color: white; color: black; font-size: large; text-align: center;`;
+            }
 
-            if(final[pressed[0]] == final[pressed[1]]) {
+            if(String(final[pressed[0]]).includes(String(final[pressed[1]])) || String(final[pressed[1]]).includes(String(final[pressed[0]]))) {
                 pressed = [];
                 guessed++;
             }
@@ -89,8 +104,10 @@ function startGame() {
                 setTimeout(function(){ 
                     object = document.getElementById(pressed[0]);
                     object.style.cssText = `border-radius: 1vh; background-color: lightgray; height: 100px; width: 100px;`;
+                    object.innerHTML = "";
                     object = document.getElementById(pressed[1]);
                     object.style.cssText = `border-radius: 1vh; background-color: lightgray; height: 100px; width: 100px;`;
+                    object.innerHTML = "";
                     pressed = [];
                 }, 1000);
             }
@@ -99,7 +116,10 @@ function startGame() {
         if(guessed == size/2) {
            document.getElementById("result").innerHTML = "Jūsu laiks - " + time + " sekundes.";
            time = 0;
+           clearInterval(timer);
         }
     }
 
 }
+
+    
